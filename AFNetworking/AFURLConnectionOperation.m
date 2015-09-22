@@ -294,7 +294,7 @@ static BOOL AFSecKeyIsEqualToKey(SecKeyRef key1, SecKeyRef key2) {
     
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
     if (_backgroundTaskIdentifier) {
-#ifndef SIGNING_ACTION_EXTENSION
+#ifndef AF_APP_EXTENSIONS
         [[UIApplication sharedApplication] endBackgroundTask:_backgroundTaskIdentifier];
 #endif
         _backgroundTaskIdentifier = UIBackgroundTaskInvalid;
@@ -357,7 +357,7 @@ static BOOL AFSecKeyIsEqualToKey(SecKeyRef key1, SecKeyRef key2) {
 
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
 - (void)setShouldExecuteAsBackgroundTaskWithExpirationHandler:(void (^)(void))handler {
-#ifndef SIGNING_ACTION_EXTENSION
+#ifndef AF_APP_EXTENSIONS
     [self.lock lock];
     if (!self.backgroundTaskIdentifier) {
         UIApplication *application = [UIApplication sharedApplication];
